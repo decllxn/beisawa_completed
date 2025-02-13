@@ -1,0 +1,196 @@
+/* AboutUs.css (or your global CSS file) */
+/* AboutUs.css */
+
+.about-us-container {
+  max-width: 7xl;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 7%;
+  margin-bottom: -50%; /* Adjust as needed */
+  padding: 1rem;
+  color: #333;
+}
+
+.about-us-title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #006633;
+}
+
+.about-us-image-text-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-us-image-text-grid {
+      grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-us-image-container {
+  position: relative;
+  width: 100%;
+}
+
+.about-us-image {
+  border-radius: 1.875rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+  width: 100%;
+  display: block;
+}
+
+.about-us-next-button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background-color: #c90000;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.about-us-next-button:hover {
+  background-color: #a80000;
+}
+
+.about-us-text-container {
+
+}
+
+.about-us-text {
+  font-size: 1rem;
+  line-height: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.about-us-highlight {
+  color: #c90000;
+  font-weight: bold;
+}
+
+.about-us-features-section {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.about-us-features-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.about-us-features-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-us-features-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-us-feature-card {
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  border-left: 4px solid #006633;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.about-us-feature-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+.about-us-feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #006633;
+}
+
+.about-us-feature-description {
+  margin-top: 0.5rem;
+  color: #777;
+}
+
+.about-us-mission-branches-section {
+  margin-top: 4rem;
+}
+
+.about-us-mission-branches-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .about-us-mission-branches-grid {
+      grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about-us-mission-branches-item {
+  text-align: center;
+}
+
+.about-us-mission-branches-image {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.about-us-mission-branches-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.about-us-mission-branches-text {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+@media (max-width: 480px) {
+  .about-us-container {
+    margin-top: 70px;
+    margin-bottom: -200%; /* Adjust as needed for very small screens */
+  }
+}
+
+@media (max-width: 720px) {
+  .about-us-container {
+    margin-top: 70px;
+    margin-bottom: -100%; /* Adjust as needed */
+  }
+}
+
+@media (max-width: 1024px) {
+  .about-us-container {
+    margin-top: 70px;
+    margin-bottom: -50%; /* Adjust as needed */
+  }
+}
+
+@media (max-width: 2000px) {
+  .about-us-container {
+    margin-bottom: -50%; /* Adjust as needed */
+  }
+}

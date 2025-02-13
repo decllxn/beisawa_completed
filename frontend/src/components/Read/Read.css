@@ -1,0 +1,140 @@
+/* Read.css - Styling for the latest blog section */
+
+.read-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.read-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #006633;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Blog Card */
+.read-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.read-card:hover {
+    transform: scale(1.02);
+}
+
+/* Image Styling */
+.read-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.read-card:hover .read-image {
+    opacity: 0.9;
+}
+
+/* Content Section */
+.read-content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Blog Name */
+.read-blog-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+/* Blog Title */
+.read-blog-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #c90000;
+    transition: color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.read-blog-title:hover {
+    color: #006633;
+}
+
+/* Blog Snippet */
+.read-snippet {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Read More Button */
+.read-link {
+    display: inline-block;
+    background: #006633;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.read-link:hover {
+    background: #c90000;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Layout for Large Screens */
+@media (min-width: 768px) {
+    .read-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+    
+    .read-image {
+        width: 50%;
+        height: 100%;
+        border-radius: 12px 0 0 12px;
+    }
+
+    .read-content {
+        width: 50%;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .read-link {
+        align-self: flex-start;
+    }
+}

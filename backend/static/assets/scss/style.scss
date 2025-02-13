@@ -1,0 +1,58 @@
+/* Theme Description
+-------------------------------------------------
+
+	  Theme Name:
+	  Author:
+	  Support:
+	  Description:
+	  Version:
+	  
+------------------------------------------------- 
+*/
+
+/* CSS Index
+-------------------------------------------------
+
+	1. Theme default css
+	2. header
+	3. slider
+	4. about-area
+	5. features-box
+	6. department
+	7. team
+	8. video-area
+	9. counter
+	10. footer
+
+-------------------------------------------------
+*/
+
+// Default
+	@use 'variables';
+	@use 'mixins';
+	@use 'overlay';
+	@use 'common';
+	@use 'color';
+
+	
+// Homepage1
+	@use 'headerMenu';
+	@use 'h1-hero';
+	@use 'about';
+	@use 'gallery';
+	@use 'wantTowork';
+	@use 'contact_form';
+	@use 'extraPage';
+	@use 'services_section';
+	@use 'testimonial';
+	@use 'footer';
+
+// inner Page
+
+
+// Default Element Page
+	@use 'blog_page';
+	@use 'contact';
+	@use 'bradcam';
+	@use 'extend';
+	@use 'elements';
