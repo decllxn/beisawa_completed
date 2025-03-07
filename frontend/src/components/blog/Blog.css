@@ -30,7 +30,7 @@
     transition: width 0.5s ease;
 }
 
-.search-box a .fas {
+.this-search {
     color: #006633;
     font-size: 20px;
     cursor: pointer;
@@ -205,6 +205,7 @@
 .blog-detail-container {
     max-width: 800px;
     margin: auto;
+    margin-top: 10%;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
@@ -223,6 +224,7 @@
     font-size: 2rem;
     color: #006633;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .blog-detail-container p {
@@ -310,77 +312,66 @@
 @media (max-width: 360px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -200%;
     }
 }
 
 @media (max-width: 480px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -150%;
     }
 }
 
 @media (max-width: 600px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -120%;
     }
 }
 
 @media (max-width: 720px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -100%;
     }
 }
 
 @media (max-width: 840px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -90%;
     }
 }
 
 @media (max-width: 960px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -80%;
     }
 }
 
 @media (max-width: 1080px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -70%;
     }
 }
 
 @media (max-width: 1200px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -60%;
     }
 }
 
 @media (max-width: 1320px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -50%;
     }
 }
 
 @media (max-width: 1440px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -70%;
     }
 }
 
 @media (max-width: 1560px) {
     .blog-list-container {
         margin-top: 5%;
-        margin-bottom: -40%;
     }
 }
 

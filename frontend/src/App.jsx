@@ -1,39 +1,57 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LandingPage from './pages/LandingPage';
-import Auth from './pages/Auth';
-import ContactPage from './pages/Contact';
-import Display from './pages/Display';
-import About from './pages/About';
-import OurBakery from './pages/OurBakery';
-import BackToSchool from './pages/BackToSchool';
-import Cosmetics from './pages/Cosmetics';
-import Liqour from './pages/Liqour';
-import Appliances from './pages/Appliances';
-import BlogList from './components/blog/BlogList';
-import BlogDetail from './components/blog/BlogDetail';
-import OfferPage from './pages/OfferPage';
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ScrollToTop from "./components/Scroll/ScrollToTop";
+
+// Lazy load pages
+const LandingPage = lazy(() => import("./pages/LandingPage"));
+const OrdersPage = lazy(() => import("./pages/OrdersPage"));
+const ContactPage = lazy(() => import("./pages/Contact"));
+const About = lazy(() => import("./pages/About"));
+const OurBakery = lazy(() => import("./pages/OurBakery"));
+const GroceryPage = lazy(() => import("./pages/GroceryPage"));
+const Cosmetics = lazy(() => import("./pages/Cosmetics"));
+const Liqour = lazy(() => import("./pages/Liqour"));
+const Appliances = lazy(() => import("./pages/Appliances"));
+const BlogList = lazy(() => import("./components/blog/BlogList"));
+const BlogDetail = lazy(() => import("./components/blog/BlogDetail"));
+const OfferPage = lazy(() => import("./pages/OfferPage"));
+const PolicyPage = lazy(() => import("./pages/PolicyPage"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
+const Location = lazy(() => import("./pages/Location"));
+
+
+// Simple loader component
+const Loader = () => (
+  <div className="loader-container2">
+    <div className="loader2"></div>
+  </div>
+);
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/display" element={<Display />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/bakery" element={<OurBakery />} />
-        <Route path="/backtoschool" element={<BackToSchool />} />
-        <Route path="/cosmetics" element={<Cosmetics />} />
-        <Route path="/liqourstore" element={<Liqour />} />
-        <Route path="/electronicsstore" element={<Appliances />} />
-        <Route path="/blog" element={<BlogList />} />
-        <Route path="/post/:url" element={<BlogDetail />} />
-        <Route path="/offers" element={<OfferPage />} />
-      </Routes>
+      <ScrollToTop />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/whatsapp-orders" element={<OrdersPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/bakery" element={<OurBakery />} />
+          <Route path="/grocery" element={<GroceryPage />} />
+          <Route path="/cosmetics" element={<Cosmetics />} />
+          <Route path="/liqourstore" element={<Liqour />} />
+          <Route path="/electronicsstore" element={<Appliances />} />
+          <Route path="/blog" element={<BlogList />} />
+          <Route path="/post/:url" element={<BlogDetail />} />
+          <Route path="/offers" element={<OfferPage />} />
+          <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/location" element={<Location />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };
 
-export default App
+export default App;

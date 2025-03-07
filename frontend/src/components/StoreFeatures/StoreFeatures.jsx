@@ -1,10 +1,13 @@
 import React from "react";
 import "./StoreFeatures.css";
 import { Link } from "react-router-dom";
-import liquorImage from "../StoreSection/img/Red-Wine.jpg";
-import cosmeticsImage from "../StoreSection/img/cosmetic.jpg";
-import bakeryImage from "../StoreSection/img/img1.jpg";
-import electronicsImage from "../StoreSection/img/appliances.jpg";
+import Whiskey from "./Storefeatures/whiskey.jpeg";
+import Cosmetic from "./Storefeatures/cosmeticss.avif";
+import Appliance from "./Storefeatures/appliancess.jpg";
+import Bakery from "./Storefeatures/Bakery.jpeg";
+import Fruits from "./Storefeatures/fruitsandveggies.jpg";
+import Home from "./Storefeatures/home.jpeg";
+
 
 const StoreFeatures = () => {
   return (
@@ -18,8 +21,8 @@ const StoreFeatures = () => {
       </p>
       <div className="store-grid">
         <div className="store-item">
-          <Link to="/liquor-store" className="store-link">
-            <img src={liquorImage} alt="Liquor Store" className="store-image" />
+          <Link to="/liquorstore" className="store-link">
+            <img src={Whiskey} alt="Liquor Store" className="store-image" />
             <div className="store-overlay">
               <span>Liquor Store</span>
             </div>
@@ -28,7 +31,7 @@ const StoreFeatures = () => {
         <div className="store-item">
           <Link to="/cosmetics-store" className="store-link">
             <img
-              src={cosmeticsImage}
+              src={Cosmetic}
               alt="Cosmetics Store"
               className="store-image"
             />
@@ -39,17 +42,17 @@ const StoreFeatures = () => {
         </div>
         <div className="store-item">
           <Link to="/bakery" className="store-link">
-            <img src={bakeryImage} alt="Bakery" className="store-image" />
+            <img src={Bakery} alt="Bakery" className="store-image" />
             <div className="store-overlay">
               <span>Bakery</span>
             </div>
           </Link>
         </div>
         <div className="store-item">
-          <Link to="/electronics" className="store-link">
+          <Link to="/fruits" className="store-link">
             <img
-              src={electronicsImage}
-              alt="Electronics"
+              src={Fruits}
+              alt="Fruits"
               className="store-image"
             />
             <div className="store-overlay">
@@ -61,7 +64,7 @@ const StoreFeatures = () => {
         <div className="store-item">
           <Link to="/electronics" className="store-link">
             <img
-              src={electronicsImage}
+              src={Appliance}
               alt="Electronics"
               className="store-image"
             />
@@ -72,10 +75,10 @@ const StoreFeatures = () => {
           
         </div>
         <div className="store-item">
-          <Link to="/electronics" className="store-link">
+          <Link to="/home" className="store-link">
             <img
-              src={electronicsImage}
-              alt="Electronics"
+              src={Home}
+              alt="Home"
               className="store-image"
             />
             <div className="store-overlay">

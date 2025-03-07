@@ -1,0 +1,112 @@
+.policy-container {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 10%;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    text-align: center;
+}
+
+.policy-header {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #c90000;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Alternating layout */
+.policy-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(0, 102, 51, 0.05);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.policy-section:hover {
+    transform: scale(1.02);
+}
+
+/* Image alternates */
+.image-right {
+    flex-direction: row-reverse;
+}
+
+.image-left {
+    flex-direction: row;
+}
+
+.policy-image {
+    width: 45%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.policy-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.policy-image:hover {
+    transform: rotate(2deg) scale(1.05);
+}
+
+.policy-content {
+    width: 50%;
+    text-align: left;
+    padding: 20px;
+}
+
+.policy-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #c90000;
+    margin-bottom: 10px;
+}
+
+.policy-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.policy-content li {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    color: #006633;
+    font-size: 1.4rem;
+    min-width: 24px;  /* Ensures icons stay uniform */
+    min-height: 24px;
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .policy-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .policy-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .policy-image {
+        width: 100%;
+    }
+}

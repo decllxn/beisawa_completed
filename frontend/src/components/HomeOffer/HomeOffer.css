@@ -1,0 +1,69 @@
+.home-offer-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    margin-top: 70%;
+  }
+  
+  .home-offer-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #c90000;
+    text-transform: uppercase;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .home-offer-subtitle {
+    font-size: 18px;
+    color: #006633;
+    margin-bottom: 20px;
+  }
+  
+  .home-offer-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* Ensures it doesn't get too large */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home-offer-image {
+    width: 100%;
+    height: auto; /* Adjusts height dynamically based on the image */
+    max-height: 500px; /* Ensures images don’t get too tall */
+    object-fit: contain; /* Ensures full visibility */
+    transition: opacity 0.8s ease-in-out;
+  }
+  
+  .home-offer-buttons {
+    margin-top: 10px;
+  }
+  
+  .home-offer-buttons button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #006633;
+    padding: 10px;
+    transition: 0.3s;
+  }
+  
+  .home-offer-buttons button:hover {
+    color: #c90000;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }  
+
+@media (min-width: 481px) and (max-width: 720px) {
+  .home-offer-container {
+    margin-top: 100%;
+  }
+}

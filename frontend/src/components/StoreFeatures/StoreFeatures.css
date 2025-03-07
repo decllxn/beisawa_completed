@@ -1,5 +1,4 @@
 .store-features-container {
-    margin-top: 60%;
     text-align: center;
     padding: 50px 20px;
   }
@@ -60,3 +59,4 @@
   .store-item:hover .store-overlay {
     background: #c90000;
   }  
+

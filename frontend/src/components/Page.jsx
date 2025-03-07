@@ -6,6 +6,8 @@ import myImage from '../assets/shoppingpic.jpg'
 import StoreFeatures from './StoreFeatures/StoreFeatures';
 import Experience from './Experience/Experience';
 import Read from './Read/Read';
+import HomeOffer from './HomeOffer/HomeOffer';
+import BackToTop from './Scroll/BackToTop';
 
 const Page = () => {
 
@@ -51,6 +53,7 @@ const Page = () => {
 
   return (
     <>
+    <BackToTop />
     <div className="header__container">
       <div className="header__image">
         <div className="header__image__card header__image__card-1">
@@ -71,8 +74,8 @@ const Page = () => {
           <Link to="/cosmetics" className="text__link">Cosmetics</Link>
         </div>
         <div className="header__image__card header__image__card-5">
-          <span><i className="ri-graduation-cap-line"></i></span>
-          <Link to="/backtoschool" className="text__link">Back To School</Link>
+          <span><i className="ri-shopping-basket-line"></i></span>
+          <Link to="/grocery" className="text__link">Grocerys</Link>
         </div>
         <img src={myImage} alt="header" />
       </div>
@@ -90,7 +93,7 @@ const Page = () => {
               <h5>Located at;</h5>
               <div>
                 <span><i className="ri-map-pin-line"></i></span>
-                <input type="text" placeholder="Meru, Kenya" />
+                <Link to="/location" className='text__link'>Our Branches</Link>
               </div>
             </div>
           </div>
@@ -99,6 +102,7 @@ const Page = () => {
         </div>
       </div>
     </div>
+    <HomeOffer />
     <StoreFeatures />
     <Read />
     <Experience />

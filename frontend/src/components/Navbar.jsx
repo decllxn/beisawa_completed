@@ -59,9 +59,9 @@ const Navbar = () => {
               </li>
   
               <li className="nav__item">
-                <Link to="/auth" className="nav__link">
+                <Link to="/whatsapp-orders" className="nav__link">
                   <i className="ri-arrow-right-s-line"></i>
-                  <span>Profile</span>
+                  <span>Whatsapp orders</span>
                 </Link>
               </li>
             </ul>
@@ -71,20 +71,20 @@ const Navbar = () => {
             </div>
   
             <div className="nav__social">
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="nav__social-link">
+              <a href="https://www.instagram.com/beisawasupermarket/" rel="noreferrer" className="nav__social-link">
                 <i className="ri-instagram-line"></i>
               </a>
-              <a href="https://tiktok.com/" target="_blank" rel="noreferrer" className="nav__social-link">
+              <a href="https://tiktok.com/beisawasupermarket" rel="noreferrer" className="nav__social-link">
                 <i className="ri-tiktok-line"></i>
               </a>
-              <a href="https://facebook.com/" target="_blank" rel="noreferrer" className="nav__social-link">
+              <a href="https://web.facebook.com/people/Beisawa-Supermarket/100075878927275/#" target="_blank" rel="noreferrer" className="nav__social-link">
                 <i className="ri-facebook-line"></i>
               </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noreferrer" className="nav__social-link">
+              <a href="https://www.youtube.com/@BeisawaSupermarket" rel="noreferrer" className="nav__social-link">
                 <i className="ri-youtube-line"></i>
               </a>
-              <a href="https://www.google.maps.com/" target="_blank" rel="noreferrer" className="nav__social-link">
-                <i className="ri-map-pin-line"></i>
+              <a href="https://x.com/?lang=en" rel="noreferrer" className="nav__social-link">
+                <i className="ri-twitter-x-line"></i>
               </a>
             </div>
           </div>

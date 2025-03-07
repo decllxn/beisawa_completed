@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CorporateOnboarding, SupplierEngagement, CustomerFeedback
+from .models import CorporateOnboarding, SupplierEngagement, CustomerFeedback, whatsappNumbers
 
 class CustomerFeedbackSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,9 @@ class CorporateOnboardingSerializer(serializers.ModelSerializer):
     class Meta:
         model = CorporateOnboarding
         fields = ["company_name", "email", "contact_person", "phone_number", "onboarding_details"]
+
+
+class whatsappNumbersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = whatsappNumbers
+        fields = ["branch", "phone_number"]

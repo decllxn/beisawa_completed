@@ -1,0 +1,125 @@
+/* ---- Global Container ---- */
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff);
+    color: #333;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* ---- Amazing 404 Text ---- */
+  .error-code {
+    font-size: 8rem;
+    font-weight: 800;
+    color: transparent;
+    background: linear-gradient(135deg, #006633, #c90000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+  }
+  
+  /* The middle zero styled differently */
+  .zero {
+    font-size: 9rem;
+    display: inline-block;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 10px rgba(201, 0, 0, 0.3);
+  }
+  
+  /* ---- Error Message Styling ---- */
+  .error-message {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #666;
+    margin-top: 10px;
+    max-width: 500px;
+    line-height: 1.6;
+  }
+  
+  /* ---- Home Button Styling ---- */
+  .home-button-container {
+    margin-top: 25px;
+  }
+  
+  .home-button {
+    background: #006633;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 102, 51, 0.3);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  /* Home Button Hover Effect */
+  .home-button:hover {
+    background: #c90000;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(201, 0, 0, 0.3);
+  }
+  
+  /* ---- Floating Decorative Elements ---- */
+  .floating-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(201, 0, 0, 0.2);
+    border-radius: 50%;
+    top: 20%;
+    left: 10%;
+    animation: floatAnimation 4s infinite ease-in-out alternate;
+  }
+  
+  .floating-square {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 102, 51, 0.2);
+    transform: rotate(45deg);
+    bottom: 15%;
+    right: 15%;
+    animation: floatAnimation 4s infinite ease-in-out alternate-reverse;
+  }
+  
+  /* ---- Floating Animation ---- */
+  @keyframes floatAnimation {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* ---- Responsive Design ---- */
+  @media (max-width: 768px) {
+    .error-code {
+      font-size: 6rem;
+    }
+    
+    .zero {
+      font-size: 7rem;
+    }
+    
+    .error-message {
+      font-size: 1.3rem;
+      max-width: 90%;
+    }
+    
+    .home-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }  

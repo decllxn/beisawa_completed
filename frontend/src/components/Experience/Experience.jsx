@@ -1,34 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Experience.css";
-import liquorImage from "../StoreSection/img/Red-Wine.jpg";
-import cosmeticsImage from "../StoreSection/img/cosmetic.jpg";
-import bakeryImage from "../StoreSection/img/img1.jpg";
-import electronicsImage from "../StoreSection/img/appliances.jpg";
+import thisOrders from "./expimg/thisOrders.jpeg";
+import SawaPoints from "./expimg/SawaPoints.jpeg";
+import Online from "./expimg/online-shopping.jpeg";
+import Special from "./expimg/Special-Offers.jpg";
+
 
 const experiences = [
   {
     title: "What's up orders",
     subtitle: "Order at the comfort of your home",
-    image: liquorImage,
-    link: "/whats-up-orders",
+    image: thisOrders,
+    link: "/whatsapp-orders",
   },
   {
     title: "Sawa points",
     subtitle: "Loyalty points from shopping",
-    image: cosmeticsImage,
+    image: SawaPoints,
     link: "/sawa-point",
   },
   {
     title: "Sizzling offers",
     subtitle: "Get the hottest deals",
-    image: bakeryImage,
+    image: Special,
     link: "/offers",
   },
   {
     title: "Online Shopping",
     subtitle: "Shop from anywhere, anytime",
-    image: electronicsImage,
+    image: Online,
     link: "/online-shopping",
   },
 ];

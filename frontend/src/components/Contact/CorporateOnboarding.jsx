@@ -149,7 +149,7 @@ const CorporateOnboarding = () => {
                 <span>Onboarding Details</span>
             </div>
             <input type="submit" value="Send" className="btn" />
-            {message && <p>{message}</p>}
+            {message && <p className="success-message">{message}</p>}
         </form>
     );
 };

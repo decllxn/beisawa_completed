@@ -113,13 +113,26 @@ form {
   outline: none;
   border: 2px solid #fafafa;
   background: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.6rem 2.5rem 0.6rem 1.2rem; /* Adjusted padding for arrow */
   color: #fff;
   font-weight: 500;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
   border-radius: 25px;
   transition: 0.3s;
+  appearance: none; /* Hides default arrow */
+  position: relative;
+}
+
+.input-container select::after {
+  content: "\25BC"; /* Unicode for down arrow */
+  font-size: 1rem;
+  color: #fff;
+  position: absolute;
+  right: 15px; /* Adjust the arrow closer */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 textarea.input {
@@ -396,4 +409,16 @@ textarea.input {
   .btn {
     padding: 0.45rem 1.2rem;
   }
+}
+
+.success-message {
+  color: #006633;
+  background: #e8f5e9;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeIn 0.5s ease-in-out forwards;
 }

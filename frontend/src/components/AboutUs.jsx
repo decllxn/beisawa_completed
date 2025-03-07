@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import '../styles/AboutUs.css';
-import schoolImage from './StoreSection/img/school.jpg';
-import redWineImage from './StoreSection/img/Red-Wine.jpg';
-import cosmeticImage from './StoreSection/img/cosmetic.jpg';
 import Footer from "./Footer/Footer";
+import About1 from "/AboutImg/About1.jpeg";
+import About2 from "/AboutImg/About2.jpeg";
+import About3 from "/AboutImg/About3.jpeg";
+import About4 from "/AboutImg/About4.jpeg";
+import About5 from "/AboutImg/About5.jpeg";
+import About6 from "/AboutImg/About6.jpeg";
+import Info from "/AboutImg/info.jpeg";
+import Info1 from "/AboutImg/info1.jpeg";
+import Info2 from "/AboutImg/info2.jpeg";
 
-const images = [
-  schoolImage,
-  redWineImage,
-  cosmeticImage,
-];
+const images = [About1, About2, About3, About4, About5, About6];
 
 export default function AboutUs() {
   const [current, setCurrent] = useState(0);
@@ -43,10 +45,7 @@ export default function AboutUs() {
               alt="Supermarket Interior"
               className="about-us-image"
             />
-            <button
-              onClick={nextSlide}
-              className="about-us-next-button"
-            >
+            <button onClick={nextSlide} className="about-us-next-button">
               Next
             </button>
           </motion.div>
@@ -103,7 +102,7 @@ export default function AboutUs() {
         >
           <div className="about-us-mission-branches-grid">
             <div className="about-us-mission-branches-item">
-              <img src={schoolImage} alt="Our Mission" className="about-us-mission-branches-image" />
+              <img src={Info} alt="Our Mission" className="about-us-mission-branches-image" />
               <h4 className="about-us-mission-branches-title">Our Mission & Objectives</h4>
               <p className="about-us-mission-branches-text">
                 To provide high-quality products and exceptional service, creating a
@@ -112,20 +111,20 @@ export default function AboutUs() {
               </p>
             </div>
             <div className="about-us-mission-branches-item">
-              <img src={redWineImage} alt="Our Branches" className="about-us-mission-branches-image" />
+              <img src={Info1} alt="Our Branches" className="about-us-mission-branches-image" />
               <h4 className="about-us-mission-branches-title">Our Branches</h4>
               <p className="about-us-mission-branches-text">
-                We have multiple branches conveniently located across the city, making
+                We have branches conveniently located across the central region, making
                 it easy for you to access our wide range of products and services. Find
                 a branch near you!
               </p>
             </div>
             <div className="about-us-mission-branches-item">
-              <img src={cosmeticImage} alt="Our Values" className="about-us-mission-branches-image" />
+              <img src={Info2} alt="Our Values" className="about-us-mission-branches-image" />
               <h4 className="about-us-mission-branches-title">Our Values</h4>
               <p className="about-us-mission-branches-text">
-                 Integrity, customer focus, quality, innovation, and community engagement
-                 are the core values that guide our operations and shape our culture.
+                Integrity, customer focus, quality, innovation, and community engagement
+                are the core values that guide our operations and shape our culture.
               </p>
             </div>
           </div>

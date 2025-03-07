@@ -72,7 +72,13 @@ const BlogDetail = () => {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return (
+        <div>
+            <div className="loader-container2">
+                <div className="loader2"></div>
+            </div>
+        </div>
+    );
     if (error) return <div>Error: {error.message}</div>;
     if (!blog) return <div>Blog not found.</div>;
 

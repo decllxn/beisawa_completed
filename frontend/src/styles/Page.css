@@ -207,6 +207,38 @@ ul {
     font-size: 1rem;
     background-color: transparent;
   }
+
+  .text__link {
+    position: relative;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Underline effect */
+  .text__link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .text__link:hover {
+    color: #006633;
+    transform: scale(1.1);
+  }
+  
+  .text__link:hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
   
   .header__content input::placeholder {
     font-weight: 600;
@@ -280,7 +312,7 @@ ul {
 
   @media (min-width: 481px) and (max-width: 720px) {
     .header__container {
-      top: 30em;
+      top: 35em;
     }
   }
 
@@ -295,3 +327,4 @@ ul {
       top: 36em;
     }
   }
+

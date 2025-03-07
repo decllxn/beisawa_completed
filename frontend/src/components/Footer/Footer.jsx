@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
                 <div className="col">
                     <h3>
-                        Customer Service
+                        Service
                         <div className="underline">
                             <span></span>
                         </div>

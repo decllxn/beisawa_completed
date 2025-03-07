@@ -5,7 +5,7 @@ import _ from "lodash";
 import './Blog.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer/Footer';
-import Preloader from '../preloader/Preloader';
+
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
@@ -114,7 +114,12 @@ const BlogList = () => {
     };
 
     if (loading) {
-        return <div><Preloader /></div>;
+        return (
+        <div> 
+            <div className="loader-container2">
+                <div className="loader2"></div>
+            </div>
+        </div>);
     }
 
     if (error) {
@@ -135,7 +140,7 @@ const BlogList = () => {
                             placeholder="Search..." 
                         />
                         <button type="submit">
-                            <i className="fas fa-search"></i>
+                            
                         </button>
                     </form>
                 </div>
