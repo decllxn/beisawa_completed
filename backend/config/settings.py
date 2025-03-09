@@ -3,6 +3,9 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 load_dotenv()
 
@@ -279,3 +282,9 @@ CSRF_COOKIE_HTTPONLY = False  # Allow JS to access it
 CSRF_COOKIE_SAMESITE = 'Lax'  # Or 'None' if cross-origin
 CSRF_COOKIE_SECURE = False  # True in production (HTTPS)
 
+
+cloudinary.config(
+    cloud_name="dbdhs3acp",
+    api_key=os.getenv('API_KEY'),
+    api_secret=os.getenv('API_SECRET')
+)

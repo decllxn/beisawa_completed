@@ -1,6 +1,7 @@
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from django.conf import settings
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -13,7 +14,7 @@ class Blogs(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = CKEditor5Field('Text', config_name='extends')
     date = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='uploads')
+    image = CloudinaryField('image')
     url = models.SlugField(unique=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     is_published = models.BooleanField(default=True)

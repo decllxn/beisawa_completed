@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { motion } from "framer-motion";
+import { fetchWhatsappNumbers } from "../../api"; // Import API function
 import "./WhatsappOrders.css";
 
 import orders1 from "./orders/orders.webp";
@@ -12,14 +12,11 @@ const WhatsappOrders = () => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/feedback/api/whatsapp-numbers/")
-      .then((response) => {
-        setContacts(response.data.results);
-      })
-      .catch((error) => {
-        console.error("Error fetching WhatsApp numbers:", error);
-      });
+    const loadContacts = async () => {
+      const data = await fetchWhatsappNumbers();
+      setContacts(data);
+    };
+    loadContacts();
   }, []);
 
   return (

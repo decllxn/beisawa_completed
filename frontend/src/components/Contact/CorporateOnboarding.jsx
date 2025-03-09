@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { getCSRFToken } from "../../../utils/csrf";
+import { submitCorporateOnboarding } from "../../api";
 
 const CorporateOnboarding = () => {
     const [formData, setFormData] = useState({
@@ -12,15 +11,6 @@ const CorporateOnboarding = () => {
     });
 
     const [message, setMessage] = useState("");
-    const [csrfToken, setCsrfToken] = useState("");
-
-    useEffect(() => {
-        const fetchToken = async () => {
-            const token = await getCSRFToken();
-            setCsrfToken(token);
-        };
-        fetchToken();
-    }, []);
 
     useEffect(() => {
         const inputs = document.querySelectorAll(".input");
@@ -49,27 +39,9 @@ const CorporateOnboarding = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const csrfToken = await getCSRFToken();
-
-        if (!csrfToken) {
-            console.error("CSRF token not found!");
-            alert("CSRF token is missing. Please try again.");
-            return;
-        }
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:8000/feedback/api/corporate-onboarding/", 
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRFToken": csrfToken,
-                    },
-                    withCredentials: true,
-                }
-            );
-
+            const response = await submitCorporateOnboarding(formData);
             if (response.status === 201) {
                 setMessage("Corporate onboarding details submitted successfully!");
                 setFormData({

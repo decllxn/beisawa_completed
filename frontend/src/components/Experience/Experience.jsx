@@ -6,7 +6,6 @@ import SawaPoints from "./expimg/SawaPoints.jpeg";
 import Online from "./expimg/online-shopping.jpeg";
 import Special from "./expimg/Special-Offers.jpg";
 
-
 const experiences = [
   {
     title: "What's up orders",
@@ -30,7 +29,8 @@ const experiences = [
     title: "Online Shopping",
     subtitle: "Shop from anywhere, anytime",
     image: Online,
-    link: "/online-shopping",
+    link: "https://www.grocerypik.com/",
+    external: true, // Flag for external links
   },
 ];
 
@@ -39,7 +39,9 @@ const Experience = () => {
     <div className="experience-container">
       {/* Section Title */}
       <h2 className="experience-title">Experience Beisawa</h2>
-      <p className="experience-subtitle">Discover the best of shopping, rewards, and convenience.</p>
+      <p className="experience-subtitle">
+        Discover the best of shopping, rewards, and convenience.
+      </p>
 
       {/* Experience Items */}
       <div className="experience-section">
@@ -49,10 +51,24 @@ const Experience = () => {
             <div className="experience-overlay">
               <h2>{exp.title}</h2>
               <p>{exp.subtitle}</p>
-              <Link to={exp.link} className="experience-link">
-                <i className="ri-arrow-right-s-line"></i>
-                <span>Explore</span>
-              </Link>
+
+              {/* Conditional rendering for internal & external links */}
+              {exp.external ? (
+                <a
+                  href={exp.link}
+                  className="experience-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="ri-arrow-right-s-line"></i>
+                  <span>Explore</span>
+                </a>
+              ) : (
+                <Link to={exp.link} className="experience-link">
+                  <i className="ri-arrow-right-s-line"></i>
+                  <span>Explore</span>
+                </Link>
+              )}
             </div>
           </div>
         ))}

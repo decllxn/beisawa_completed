@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { getCSRFToken } from "../../../utils/csrf"; // Correct import
+import { getCSRFToken } from "../../../utils/csrf";
+import { submitSupplierEngagement } from "../../api";
 
 const SupplierEngagement = () => {
     const [formData, setFormData] = useState({
@@ -10,15 +10,9 @@ const SupplierEngagement = () => {
     });
 
     const [message, setMessage] = useState("");
-    const [csrfToken, setCsrfToken] = useState("");
 
     useEffect(() => {
-        const fetchCSRFToken = async () => {
-            const token = await getCSRFToken();
-            setCsrfToken(token);
-        };
-        fetchCSRFToken();
-
+        // Add focus/blur effects to inputs
         const inputs = document.querySelectorAll(".input");
 
         const focusFunc = (e) => e.target.parentNode.classList.add("focus");
@@ -45,26 +39,9 @@ const SupplierEngagement = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const csrfToken = await getCSRFToken();
-
-        if (!csrfToken) {
-            console.error("CSRF token not found!");
-            alert("CSRF token is missing. Please refresh the page.");
-            return;
-        }
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:8000/feedback/api/supplier-engagement/",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "X-CSRFToken": csrfToken,
-                    },
-                    withCredentials: true, // Required for authentication
-                }
-            );
+            const response = await submitSupplierEngagement(formData);
 
             if (response.status === 201) {
                 setMessage("Supplier engagement details submitted successfully!");
@@ -120,7 +97,7 @@ const SupplierEngagement = () => {
                 <span>Details</span>
             </div>
             <input type="submit" value="Send" className="btn" />
-            {message && <p>{message}</p>}
+            {message && <p className="success-message">{message}</p>}
         </form>
     );
 };

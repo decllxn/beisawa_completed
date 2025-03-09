@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import _ from "lodash";
 import './Blog.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer/Footer';
-
+import { fetchBlogs, fetchCategories, fetchRecentPosts } from '../../api';
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
@@ -22,34 +21,21 @@ const BlogList = () => {
     const queryParams = new URLSearchParams(location.search);
     const category = queryParams.get("category") || "";
     const searchQuery = queryParams.get("search_intent") || "";
+    const pageQuery = parseInt(queryParams.get("page")) || 1;
 
     // Sync state with URL parameters on initial load
     useEffect(() => {
         if (searchQuery) setSearchIntent(searchQuery);
-    }, [searchQuery]);
+        setCurrentPage(pageQuery); // Set the current page from URL
+    }, [searchQuery, pageQuery]);
 
     useEffect(() => {
-        const fetchBlogs = async () => {
+        const loadData = async () => {
             setLoading(true);
             try {
-                let url = `http://127.0.0.1:8000/blog/api/blogs/?page=${currentPage}&page_size=2`;
-
-                if (searchIntent) {
-                    url += `&search_intent=${encodeURIComponent(searchIntent)}`;
-                }
-
-                if (category) {
-                    url += `&category=${encodeURIComponent(category)}`;
-                }
-
-                const response = await axios.get(url);
-                if (response.data && response.data.results) {
-                    setBlogs(response.data.results);
-                    setTotalPages(Math.ceil(response.data.count / 2));
-                } else {
-                    console.error("Unexpected API response format:", response.data);
-                    setError(new Error("Unexpected API response format"));
-                }
+                const blogData = await fetchBlogs(currentPage, searchIntent, category);
+                setBlogs(blogData.results);
+                setTotalPages(Math.ceil(blogData.count / 2));
             } catch (err) {
                 console.error("Error fetching blogs:", err);
                 setError(err);
@@ -58,28 +44,27 @@ const BlogList = () => {
             }
         };
 
-        const fetchCategories = async () => {
+        loadData();
+    }, [category, currentPage, searchIntent]);
+
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/blog/api/categories/');
-                setCategories(response.data.results);
+                const categoryData = await fetchCategories();
+                setCategories(categoryData);
             } catch (err) {
                 console.error("Error fetching categories:", err);
             }
-        };
-
-        const fetchRecentPosts = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/blog/api/blogs/?ordering=-date&page=1&page_size=5');
-                setRecentPosts(response.data.results);
+                const recentPostsData = await fetchRecentPosts();
+                setRecentPosts(recentPostsData);
             } catch (err) {
                 console.error("Error fetching recent posts:", err);
             }
         };
 
-        fetchBlogs();
-        fetchCategories();
-        fetchRecentPosts();
-    }, [category, currentPage, searchIntent]);
+        fetchData();
+    }, []);
 
     // Debounced search to prevent multiple API calls on each keystroke
     const debouncedSearch = useCallback(
@@ -96,12 +81,6 @@ const BlogList = () => {
         debouncedSearch(value);
     };
 
-    const handleSearchSubmit = (e) => {
-        e.preventDefault();
-        setCurrentPage(1);
-        navigate(`/blog?search_intent=${encodeURIComponent(searchIntent)}`);
-    };
-
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
@@ -109,17 +88,12 @@ const BlogList = () => {
         }
     };
 
-    const handleCategoryClick = (categoryName) => {
-        navigate(`/blog?category=${encodeURIComponent(categoryName.toLowerCase())}`);
-    };
-
     if (loading) {
         return (
-        <div> 
             <div className="loader-container2">
                 <div className="loader2"></div>
             </div>
-        </div>);
+        );
     }
 
     if (error) {
@@ -130,22 +104,15 @@ const BlogList = () => {
         <>
             <Navbar />
             <div className="blog-list-container">
-                {/* Search Bar */}
                 <div className="search-box">
-                    <form onSubmit={handleSearchSubmit}>
-                        <input 
-                            type="text" 
-                            defaultValue={searchIntent} 
-                            onChange={handleSearchChange} 
-                            placeholder="Search..." 
-                        />
-                        <button type="submit">
-                            
-                        </button>
-                    </form>
+                    <input 
+                        type="text" 
+                        defaultValue={searchIntent} 
+                        onChange={handleSearchChange} 
+                        placeholder="Search..." 
+                    />
                 </div>
 
-                {/* Blog Posts */}
                 <div className="blog-posts">
                     {blogs.map(blog => (
                         <div key={blog.id} className="blog-post">
@@ -166,7 +133,6 @@ const BlogList = () => {
                     ))}
                 </div>
 
-                {/* Pagination */}
                 {totalPages > 1 && (
                     <div className="pagination">
                         <button 
@@ -189,19 +155,16 @@ const BlogList = () => {
                     </div>
                 )}
 
-                {/* Categories & Recent Posts */}
                 <div className="bottom-section">
-                    {/* Categories */}
                     <div className="categories">
                         <h2>Categories</h2>
-                        {Array.isArray(categories) && categories.length > 0 ? (
+                        {categories.length > 0 ? (
                             <ul className="category-list">
                                 {categories.map(category => (
                                     <li 
                                         key={category.id} 
                                         className="category-item"
-                                        onClick={() => handleCategoryClick(category.name)}
-                                        style={{ cursor: 'pointer' }}
+                                        onClick={() => navigate(`/blog?category=${encodeURIComponent(category.name.toLowerCase())}`)}
                                     >
                                         {category.name}
                                     </li>
@@ -212,7 +175,6 @@ const BlogList = () => {
                         )}
                     </div>
 
-                    {/* Recent Posts */}
                     <div className="recent-posts">
                         <h3>Recent Posts</h3>
                         <ul className="recent-post-list">
