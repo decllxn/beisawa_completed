@@ -6,7 +6,7 @@ const DEVELOPMENT_URL = "http://127.0.0.1:8000";
 const PRODUCTION_URL = "https://beisawa-completed.onrender.com";
 
 // Set environment-based API base URL
-const BASE_URL = DEVELOPMENT_URL
+const BASE_URL = PRODUCTION_URL
 const API_BASE_URL = `${BASE_URL}/offers/api/`;
 const API_BASE_URL2 = `${BASE_URL}/blog/api/`;
 
