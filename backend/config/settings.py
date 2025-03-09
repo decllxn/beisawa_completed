@@ -55,7 +55,9 @@ INSTALLED_APPS = [
     'django_ckeditor_5',
     'ckeditor_uploader',
     'offers',
-    'locations'
+    'locations',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -167,73 +169,75 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
-CKEDITOR_UPLOAD_PATH = 'uploads/'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 customColorPalette = [
-        {
-            'color': 'hsl(4, 90%, 58%)',
-            'label': 'Red'
-        },
-        {
-            'color': 'hsl(340, 82%, 52%)',
-            'label': 'Pink'
-        },
-        {
-            'color': 'hsl(291, 64%, 42%)',
-            'label': 'Purple'
-        },
-        {
-            'color': 'hsl(262, 52%, 47%)',
-            'label': 'Deep Purple'
-        },
-        {
-            'color': 'hsl(231, 48%, 48%)',
-            'label': 'Indigo'
-        },
-        {
-            'color': 'hsl(207, 90%, 54%)',
-            'label': 'Blue'
-        },
-    ]
+    {
+        'color': 'hsl(0, 0%, 0%)',
+        'label': 'Black'
+    },
+    {
+        'color': 'hsl(0, 0%, 30%)',
+        'label': 'Dark Gray'
+    },
+    {
+        'color': 'hsl(0, 0%, 60%)',
+        'label': 'Gray'
+    },
+    {
+        'color': 'hsl(0, 0%, 90%)',
+        'label': 'Light Gray'
+    },
+    {
+        'color': 'hsl(0, 0%, 100%)',
+        'label': 'White'
+    },
+    {
+        'color': '#006633',  # Your theme color
+        'label': 'Beisawa Green'
+    },
+    {
+        'color': '#c90000',  # Your theme color
+        'label': 'Beisawa Red'
+    }
+]
 
 
 CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link',
-                    'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
-
+        'toolbar': [
+            'heading', '|', 'bold', 'italic', 'link',
+            'bulletedList', 'numberedList', 'blockQuote', 'imageUpload'
+        ],
     },
     'extends': {
         'blockToolbar': [
             'paragraph', 'heading1', 'heading2', 'heading3',
-            '|',
-            'bulletedList', 'numberedList',
-            '|',
-            'blockQuote',
+            '|', 'bulletedList', 'numberedList',
+            '|', 'blockQuote',
         ],
-        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
-        'code','subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
-                    'bulletedList', 'numberedList', 'todoList', '|',  'blockQuote', 'imageUpload', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
-                    'insertTable',],
+        'toolbar': [
+            'heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 
+            'underline', 'strikethrough', 'code', 'subscript', 'superscript', 
+            'highlight', '|', 'codeBlock', 'sourceEditing', 'insertImage',
+            'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 
+            'imageUpload', '|', 'fontSize', 'fontFamily', 'fontColor', 
+            'fontBackgroundColor', 'mediaEmbed', 'removeFormat', 'insertTable'
+        ],
         'image': {
-            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
-                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side',  '|'],
-            'styles': [
-                'full',
-                'side',
-                'alignLeft',
-                'alignRight',
-                'alignCenter',
-            ]
-
+            'toolbar': [
+                'imageTextAlternative', '|', 'imageStyle:alignLeft',
+                'imageStyle:alignRight', 'imageStyle:alignCenter', 
+                'imageStyle:side', '|'
+            ],
+            'styles': ['full', 'side', 'alignLeft', 'alignRight', 'alignCenter']
         },
         'table': {
-            'contentToolbar': [ 'tableColumn', 'tableRow', 'mergeTableCells',
-            'tableProperties', 'tableCellProperties' ],
+            'contentToolbar': [
+                'tableColumn', 'tableRow', 'mergeTableCells',
+                'tableProperties', 'tableCellProperties'
+            ],
             'tableProperties': {
                 'borderColors': customColorPalette,
                 'backgroundColors': customColorPalette
@@ -243,21 +247,33 @@ CKEDITOR_5_CONFIGS = {
                 'backgroundColors': customColorPalette
             }
         },
-        'heading' : {
+        'heading': {
             'options': [
-                { 'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph' },
-                { 'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1' },
-                { 'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2' },
-                { 'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3' }
+                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
             ]
+        },
+        'list': {
+            'properties': {
+                'styles': True,
+                'startIndex': True,
+                'reversed': True,
+            }
         }
-    },
-    'list': {
-        'properties': {
-            'styles': 'true',
-            'startIndex': 'true',
-            'reversed': 'true',
-        }
+    }
+}
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join([
+            'image2',
+        ]),
+        'filebrowserUploadMethod': 'form',
+        'filebrowserUploadUrl': '/ckeditor/upload/',
+        'filebrowserBrowseUrl': '/ckeditor/browse/',
     }
 }
 
@@ -283,8 +299,11 @@ CSRF_COOKIE_SAMESITE = 'Lax'  # Or 'None' if cross-origin
 CSRF_COOKIE_SECURE = False  # True in production (HTTPS)
 
 
-cloudinary.config(
-    cloud_name="dbdhs3acp",
-    api_key=os.getenv('API_KEY'),
-    api_secret=os.getenv('API_SECRET')
-)
+
+CLOUDINARY_STORAGE = {
+   'CLOUD_NAME': 'dbdhs3acp',
+   'API_KEY': '761214886564423',
+   'API_SECRET': 'io1nDNzTKZk9OR_MXa-v1zglIHA',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

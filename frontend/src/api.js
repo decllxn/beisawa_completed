@@ -6,7 +6,7 @@ const DEVELOPMENT_URL = "http://127.0.0.1:8000";
 const PRODUCTION_URL = "https://beisawa-completed.onrender.com";
 
 // Set environment-based API base URL
-const BASE_URL = process.env.NODE_ENV === "production" ? PRODUCTION_URL : DEVELOPMENT_URL;
+const BASE_URL = DEVELOPMENT_URL
 const API_BASE_URL = `${BASE_URL}/offers/api/`;
 const API_BASE_URL2 = `${BASE_URL}/blog/api/`;
 
@@ -197,7 +197,7 @@ export const fetchBranches = async () => {
 
   export const fetchLatestBlog = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}latest-blog/`);
+      const response = await axios.get(`${API_BASE_URL2}latest-blog/`);
       return response.data;
     } catch (error) {
       console.error("Error fetching latest blog:", error);

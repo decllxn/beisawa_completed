@@ -22,7 +22,13 @@ const BlogList = () => {
     const category = queryParams.get("category") || "";
     const searchQuery = queryParams.get("search_intent") || "";
     const pageQuery = parseInt(queryParams.get("page")) || 1;
+    const cloudinaryBaseUrl = "https://res.cloudinary.com/dbdhs3acp/";
 
+
+    const getFullImageUrl = (imagePath) => {
+        return imagePath.startsWith("http") ? imagePath : `${cloudinaryBaseUrl}${imagePath}`;
+    };
+    
     // Sync state with URL parameters on initial load
     useEffect(() => {
         if (searchQuery) setSearchIntent(searchQuery);
@@ -116,7 +122,7 @@ const BlogList = () => {
                 <div className="blog-posts">
                     {blogs.map(blog => (
                         <div key={blog.id} className="blog-post">
-                            <img src={blog.image} alt={blog.title} className="blog-image" />
+                            <img src={getFullImageUrl(blog.image)} alt={blog.title} className="blog-image" />
                             <h2>
                                 <Link to={`/post/${blog.url}`} className="blog-title-link">{blog.title}</Link>
                             </h2>

@@ -17,6 +17,13 @@ const BlogDetail = () => {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const cloudinaryBaseUrl = "https://res.cloudinary.com/YOUR_CLOUD_NAME/";
+
+
+    const getFullImageUrl = (imagePath) => {
+        return imagePath.startsWith("http") ? imagePath : `${cloudinaryBaseUrl}${imagePath}`;
+    };
+
 
     useEffect(() => {
         const loadBlogData = async () => {
@@ -81,7 +88,7 @@ const BlogDetail = () => {
             <Navbar />
             <div className="blog-detail-container">
                 <h1>{blog.title}</h1>
-                {blog.image && <img src={blog.image} alt={blog.title} className="blog-detail-image" />}
+                {getFullImageUrl(blog.image) && <img src={getFullImageUrl(blog.image)} alt={blog.title} className="blog-detail-image" />}
                 <p dangerouslySetInnerHTML={{ __html: blog.content.replace(/src="\/media\//g, `src="${process.env.NODE_ENV === "production" ? "https://beisawa-completed.onrender.com" : "http://127.0.0.1:8000"}/media/`) }} />
 
                 {/* Comments Section */}
