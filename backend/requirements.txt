@@ -1,6 +1,7 @@
 asgiref==3.8.1
 bcrypt==3.2.0
 certifi==2020.6.20
+cloudinary==1.42.2
 chardet==4.0.0
 dj-database-url==2.3.0
 dj-rest-auth==7.0.0
