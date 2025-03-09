@@ -202,12 +202,21 @@
     }
 }
 
-@media (min-width: 721px) and (max-width: 1024px) {
+@media (min-width: 721px) {
     .slider10 .visible-slide {
         height: 470px;
     }
 
     .buttons10 {
-        top: 540px;
+        top: 580px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content10 h2 {
+        font-size: small;
+    }
+    .content10 p {
+        font-size: small;
     }
 }
