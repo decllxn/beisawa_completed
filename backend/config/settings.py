@@ -77,12 +77,14 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://supermarketbeisawa.netlify.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:5173",
+    "https://supermarketbeisawa.netlify.app",
 ]
 
 ROOT_URLCONF = 'config.urls'
