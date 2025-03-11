@@ -37,7 +37,7 @@ const ContactFormContainer = () => {
             {/* Dropdown to select form */}
             <div className="input-container">
               <select
-                className="input"
+                className="input select-input"
                 value={selectedForm}
                 onChange={handleFormChange}
               >

@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import _ from "lodash";
 import './Blog.css';
 import Navbar from '../Navbar';
 import Footer from '../Footer/Footer';
+import SearchBox from './SearchBox';
 import { fetchBlogs, fetchCategories, fetchRecentPosts } from '../../api';
+import "remixicon/fonts/remixicon.css";
 
 const BlogList = () => {
     const [blogs, setBlogs] = useState([]);
@@ -12,6 +13,7 @@ const BlogList = () => {
     const [recentPosts, setRecentPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
     const [searchIntent, setSearchIntent] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -24,15 +26,16 @@ const BlogList = () => {
     const pageQuery = parseInt(queryParams.get("page")) || 1;
     const cloudinaryBaseUrl = "https://res.cloudinary.com/dbdhs3acp/";
 
-
     const getFullImageUrl = (imagePath) => {
         return imagePath.startsWith("http") ? imagePath : `${cloudinaryBaseUrl}${imagePath}`;
     };
-    
-    // Sync state with URL parameters on initial load
+
     useEffect(() => {
-        if (searchQuery) setSearchIntent(searchQuery);
-        setCurrentPage(pageQuery); // Set the current page from URL
+        if (searchQuery) {
+            setSearchIntent(searchQuery);
+            setSearchInput(searchQuery);
+        }
+        setCurrentPage(pageQuery);
     }, [searchQuery, pageQuery]);
 
     useEffect(() => {
@@ -72,19 +75,14 @@ const BlogList = () => {
         fetchData();
     }, []);
 
-    // Debounced search to prevent multiple API calls on each keystroke
-    const debouncedSearch = useCallback(
-        _.debounce((value) => {
-            setSearchIntent(value);
-            setCurrentPage(1);
-            navigate(`/blog?search_intent=${encodeURIComponent(value)}`);
-        }, 500),
-        []
-    );
+    const handleSearchInputChange = (e) => {
+        setSearchInput(e.target.value);
+    };
 
-    const handleSearchChange = (e) => {
-        const value = e.target.value;
-        debouncedSearch(value);
+    const handleSearchClick = () => {
+        setSearchIntent(searchInput); // Update searchIntent state
+        setCurrentPage(1);
+        navigate(`/blog?search_intent=${encodeURIComponent(searchInput)}`);
     };
 
     const handlePageChange = (page) => {
@@ -110,14 +108,11 @@ const BlogList = () => {
         <>
             <Navbar />
             <div className="blog-list-container">
-                <div className="search-box">
-                    <input 
-                        type="text" 
-                        defaultValue={searchIntent} 
-                        onChange={handleSearchChange} 
-                        placeholder="Search..." 
-                    />
-                </div>
+                <SearchBox 
+                    searchInput={searchInput} 
+                    handleSearchChange={handleSearchInputChange} 
+                    handleSearchClick={handleSearchClick} 
+                />
 
                 <div className="blog-posts">
                     {blogs.map(blog => (

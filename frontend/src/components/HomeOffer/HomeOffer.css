@@ -4,7 +4,7 @@
   margin: auto;
   text-align: center;
   padding: 20px;
-  margin-top: 70%;
+  margin-top: 40%;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -130,9 +130,15 @@
 
 @media (max-width: 480px) {
   .home-offer-container {
-      margin-top: 120%;
+      margin-top: 125%;
       padding: 15px;
   }
+
+@media (max-width: 360px) {
+  .home-offer-container {
+    margin-top: 160%;
+  }
+}
 
   .home-offer-title {
       font-size: 22px;

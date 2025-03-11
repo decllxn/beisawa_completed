@@ -83,15 +83,6 @@ const ImageSlider = () => {
           </div>
         ))}
       </div>
-
-      <div className="buttons10">
-        <span className="prev10" onClick={prevSlide}>
-          <i className="ri-arrow-left-line"></i>
-        </span>
-        <span className="next10" onClick={nextSlide}>
-          <i className="ri-arrow-right-line"></i>
-        </span>
-      </div>
     </div>
   );
 };

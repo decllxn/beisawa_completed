@@ -124,6 +124,47 @@ form {
   position: relative;
 }
 
+.select-input {
+  background: #f8f8f8 !important; /* Light background for visibility */
+  color: #333 !important;
+  appearance: none; /* Hide default dropdown arrow */
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.input-container select {
+  position: relative;
+}
+
+.input-container::after {
+  content: "\25BC"; /* Down arrow (▼) */
+  font-size: 1rem;
+  color: #006633;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Hover effect */
+.select-input:hover {
+  background: #eaeaea;
+}
+
+/* Dropdown options styling */
+.select-input option {
+  background: #fff; /* White background */
+  color: #333;
+  font-weight: 500;
+  padding: 10px;
+}
+
+/* Focus & active state */
+.select-input:focus {
+  border-color: #c90000;
+}
+
 .input-container select::after {
   content: "\25BC"; /* Unicode for down arrow */
   font-size: 1rem;

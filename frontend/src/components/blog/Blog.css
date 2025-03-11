@@ -12,28 +12,71 @@
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    padding: 0 20px;
+    padding: 0 15px;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.search-box:hover input {
-    width: 350px;
+.search-icon {
+    font-size: 22px;
+    color: #006633;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .search-box input {
+    flex-grow: 1;
     width: 0;
     outline: none;
     border: none;
     font-size: 16px;
     padding: 10px;
     background: transparent;
-    transition: width 0.5s ease;
+    transition: width 0.5s ease, padding 0.3s ease;
+    color: #333;
 }
 
-.this-search {
-    color: #006633;
+.search-box input::placeholder {
+    color: #aaa;
+    transition: color 0.3s ease;
+}
+
+.search-box:hover .search-icon {
+    color: #c90000;
+}
+
+.search-box:hover input,
+.search-box.active input {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.search-box:hover {
+    box-shadow: 0 10px 30px rgba(0, 102, 51, 0.2);
+}
+
+.search-button {
+    background: transparent; /* Removes background */
+    border: none; /* Removes border */
+    outline: none; /* Removes focus outline */
+    padding: 0; /* Removes extra spacing */
+    cursor: pointer; /* Ensures it's clickable */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Optional: Change icon color */
+.search-button .search-icon {
     font-size: 20px;
-    cursor: pointer;
+    color: #006633;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Optional: Change icon color on hover */
+.search-button:hover .search-icon {
+    color: #c90000;
 }
 
 /* Blog List Layout */
@@ -184,6 +227,15 @@
     object-fit: cover;
     border-radius: 8px;
     margin-right: 10px;
+}
+
+
+.recent-post-link {
+    color: #333;
+}
+
+.recent-post-link:hover {
+    color: #006633;
 }
 
 /* Mobile Responsive */
