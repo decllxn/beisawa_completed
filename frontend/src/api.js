@@ -4,7 +4,8 @@ import { getCSRFToken } from "../utils/csrf";
 
 
 // Set environment-based API base URL
-const BASE_URL = "https://beisawa-completed.onrender.com";
+//const BASE_URL = "https://beisawa-completed.onrender.com";
+const BASE_URL = "http://127.0.0.1:8000"
 const API_BASE_URL = `${BASE_URL}/offers/api/`;
 const API_BASE_URL2 = `${BASE_URL}/blog/api/`;
 
@@ -19,15 +20,15 @@ const api = axios.create({
 });
 
 // Function to fetch blog list with pagination, search, and category filters
-export const fetchBlogs = async (currentPage = 1, searchIntent = "", category = "") => {
+export const fetchBlogs = async (currentPage = 1, searchIntent = "", categoryId = "") => {
     try {
         let url = `/blog/api/blogs/?page=${currentPage}&page_size=2`;
 
         if (searchIntent) {
             url += `&search_intent=${encodeURIComponent(searchIntent)}`;
         }
-        if (category) {
-            url += `&category=${encodeURIComponent(category)}`;
+        if (categoryId && !isNaN(categoryId)) {
+            url += `&category__id=${parseInt(categoryId, 10)}`; // Ensure integer format
         }
 
         const response = await api.get(url);

@@ -76,13 +76,15 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "https://supermarketbeisawa.netlify.app",
+    #"https://supermarketbeisawa.netlify.app",
+    "http://localhost:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = [
-    "https://supermarketbeisawa.netlify.app",
+    #"https://supermarketbeisawa.netlify.app",
+    "http://localhost:5173",
 ]
 
 ROOT_URLCONF = 'config.urls'

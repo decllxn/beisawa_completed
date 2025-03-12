@@ -136,7 +136,7 @@
 
 @media (max-width: 360px) {
   .home-offer-container {
-    margin-top: 160%;
+    margin-top: 170%;
   }
 }
 
@@ -154,5 +154,42 @@
 
   .home-offer-image {
       max-height: 350px;
+  }
+}
+
+
+@media (max-height: 360px) {
+  .home-offer-container {
+    margin-top: 80%;
+  }
+}
+
+@media (max-height: 480px) {
+  .home-offer-container {
+    margin-top: 70%;
+  }
+}
+
+@media (max-height: 600px) {
+  .home-offer-container {
+    margin-top: 70%;
+  }
+}
+
+@media (max-height: 720px) {
+  .home-offer-container {
+    margin-top: 70%;
+  }
+}
+
+@media (max-height: 840px) {
+  .home-offer-container {
+    margin-top: 70%;
+  }
+}
+
+@media (max-height: 960px) {
+  .home-offer-container {
+    margin-top: 70%;
   }
 }

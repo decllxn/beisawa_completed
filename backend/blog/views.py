@@ -10,38 +10,36 @@ from django.http import JsonResponse
 from rest_framework.views import APIView
 from rest_framework import status
 
-class BlogPagination(PageNumberPagination):
-    page_size = 2
-    max_page_size = 100  # Ensure this is properly set
-    page_size_query_param = 'page_size'
 
+class BlogPagination(PageNumberPagination):
+    page_size = 2  # Controls the number of blogs per page
+    max_page_size = 100
+    page_size_query_param = "page_size"
 
     def get_paginated_response(self, data):
-        print(f"Total blogs count: {self.page.paginator.count}")  # Debug total blogs
-        print(f"Total pages: {self.page.paginator.num_pages}")  # Debug total pages
-        print(f"Current page: {self.page.number}")  # Debug current page
-
         return Response({
-            'count': self.page.paginator.count,
-            'total_pages': self.page.paginator.num_pages,
-            'current_page': self.page.number,
-            'results': data
+            "count": self.page.paginator.count,  # Total filtered blogs count
+            "total_pages": self.page.paginator.num_pages,  # Total pages based on filtered data
+            "current_page": self.page.number,
+            "results": data
         })
 
 class BlogList(generics.ListAPIView):
     serializer_class = BlogSerializer
     pagination_class = BlogPagination
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-    search_fields = ['title', 'content']
-    filterset_fields = ['category__id']  # Using ID instead of name for reliability
+    
+    search_fields = ["title", "content"]
+    filterset_fields = ["category__id"]  # Ensure frontend sends category ID
 
     def get_queryset(self):
-        queryset = Blogs.objects.filter(is_published=True).order_by('-date')
+        queryset = Blogs.objects.filter(is_published=True).order_by("-date")
 
-        # Debugging: Check if query parameters are received
-        search_intent = self.request.GET.get('search_intent', '').strip()
-        category = self.request.GET.get('category', '').strip()
+        # Get filters
+        search_intent = self.request.GET.get("search_intent", "").strip()
+        category = self.request.GET.get("category", "").strip()
 
+        # Debugging
         print(f"Received search_intent: {search_intent}")
         print(f"Received category filter: {category}")
 
@@ -51,12 +49,7 @@ class BlogList(generics.ListAPIView):
                 Q(title__icontains=search_intent) | Q(content__icontains=search_intent)
             )
 
-        # Apply category filter
-        if category:
-            queryset = queryset.filter(category__name__iexact=category)
-
-        print(f"Filtered Queryset: {queryset}")  # Debugging output
-        return queryset.distinct()
+        return queryset.distinct()  # Category filtering is handled automatically
 
 class LatestBlogView(APIView):
     def get(self, request, *args, **kwargs):

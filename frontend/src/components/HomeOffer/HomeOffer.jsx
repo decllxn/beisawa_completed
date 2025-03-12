@@ -16,10 +16,13 @@ const HomeOffer = () => {
                     observer.disconnect();
                 }
             },
-            { threshold: 0.2 } // Trigger when 20% of the component is visible
+            { threshold: 0.2 }
         );
 
-        if (observerRef.current) observer.observe(observerRef.current);
+        if (observerRef.current) {
+            observer.observe(observerRef.current);
+            console.log("Observer attached to:", observerRef.current);
+        }
 
         return () => observer.disconnect();
     }, []);
@@ -28,10 +31,21 @@ const HomeOffer = () => {
         if (isVisible) {
             const loadOffers = async () => {
                 try {
-                    const data = await fetchHomeOffers();
-                    setOffers(data);
+                    const response = await fetchHomeOffers();
+                    console.log("Fetched Offers Full Response:", response);
+
+                    // Check if response has results and it's an array
+                    const offersData = response?.results || response || [];
+                    if (!Array.isArray(offersData)) {
+                        console.error("Invalid offers format:", offersData);
+                        setOffers([]);
+                        return;
+                    }
+
+                    setOffers(offersData);
                 } catch (error) {
                     console.error("Error fetching offers:", error);
+                    setOffers([]); // Ensure UI still works even if API fails
                 }
             };
             loadOffers();
@@ -40,9 +54,10 @@ const HomeOffer = () => {
 
     useEffect(() => {
         if (offers.length > 0) {
+            console.log("Offers updated:", offers);
             const interval = setInterval(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % offers.length);
-            }, 4000); // Auto-slide every 4 seconds
+            }, 4000);
             return () => clearInterval(interval);
         }
     }, [offers]);
@@ -56,7 +71,7 @@ const HomeOffer = () => {
                 <>
                     <div className="home-offer-slider">
                         <img
-                            src={offers[currentIndex].image}
+                            src={offers[currentIndex]?.image_url || "/default-offer.jpg"}
                             alt={`Offer ${currentIndex + 1}`}
                             className="home-offer-image"
                         />

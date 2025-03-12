@@ -1,7 +1,8 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Offer(models.Model):
-    image = models.ImageField(upload_to='offers/')
+    image = CloudinaryField('image', folder="offers")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -9,7 +10,7 @@ class Offer(models.Model):
 
 
 class HomePageOffer(models.Model):
-    image = models.ImageField(upload_to='homepage_offers/')
+    image = CloudinaryField('image', folder="homepage_offers")
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
