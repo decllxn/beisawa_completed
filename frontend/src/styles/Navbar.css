@@ -42,10 +42,12 @@ a {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 
 ul {
@@ -58,8 +60,10 @@ ul {
   width: 100%;
   top: 0;
   left: 0;
+  right: 0;
   background-color: var(--black-color);
   z-index: 1000;
+  overflow-x: hidden;
 }
 
 .nav {
@@ -68,6 +72,8 @@ ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 .nav__logo {

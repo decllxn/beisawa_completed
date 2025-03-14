@@ -4,7 +4,6 @@
   margin: auto;
   text-align: center;
   padding: 20px;
-  margin-top: 40%;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -113,83 +112,14 @@
   100% { left: 120%; }
 }
 
+
 /* Responsive Design */
 @media (min-width: 481px) and (max-width: 720px) {
-  .home-offer-container {
-      margin-top: 100%;
-  }
-
   .home-offer-title {
       font-size: 24px;
   }
 
   .home-offer-subtitle {
       font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .home-offer-container {
-      margin-top: 125%;
-      padding: 15px;
-  }
-
-@media (max-width: 360px) {
-  .home-offer-container {
-    margin-top: 170%;
-  }
-}
-
-  .home-offer-title {
-      font-size: 22px;
-  }
-
-  .home-offer-subtitle {
-      font-size: 14px;
-  }
-
-  .home-offer-buttons button {
-      font-size: 20px;
-  }
-
-  .home-offer-image {
-      max-height: 350px;
-  }
-}
-
-
-@media (max-height: 360px) {
-  .home-offer-container {
-    margin-top: 80%;
-  }
-}
-
-@media (max-height: 480px) {
-  .home-offer-container {
-    margin-top: 70%;
-  }
-}
-
-@media (max-height: 600px) {
-  .home-offer-container {
-    margin-top: 70%;
-  }
-}
-
-@media (max-height: 720px) {
-  .home-offer-container {
-    margin-top: 70%;
-  }
-}
-
-@media (max-height: 840px) {
-  .home-offer-container {
-    margin-top: 70%;
-  }
-}
-
-@media (max-height: 960px) {
-  .home-offer-container {
-    margin-top: 70%;
   }
 }

@@ -51,9 +51,7 @@ ul {
     position: relative;
     max-width: var(--max-width);
     margin-top: auto;
-    top: 50em;
     margin-right: auto;
-    margin-bottom: auto;
     margin-left: auto;
     padding-block: 8rem 2rem;
     padding-inline: 1rem;
@@ -304,27 +302,4 @@ ul {
     }
   }
 
-  @media (max-width: 480px) {
-    .header__container {
-      top: 37em;
-    }
-  }
-
-  @media (min-width: 481px) and (max-width: 720px) {
-    .header__container {
-      top: 35em;
-    }
-  }
-
-  @media (min-width: 721px) and (max-width: 1024px) {
-    .header__container {
-      top: 36em;
-    }
-  }
-
-  @media (min-width: 1025px) {
-    .header__container {
-      top: 36em;
-    }
-  }
-
+ 

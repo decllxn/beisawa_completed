@@ -1,221 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-::selection {
-    background-color: #006633;
+.image-slider {
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 100vh; /* Full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
 }
 
-.container10 {
-    font-family: 'Poppins', sans-serif;
-    position: absolute;
-    width: 100vw;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 2%;
-    margin-bottom: 15%;
-    max-height: 900px;
+/* Slides Container */
+.slides-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
 }
 
-.slider10 {
-    position: absolute;
-    inset: 80px;
-    background: #fff;
+/* Individual Slide */
+.slide {
+  min-width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  opacity: 0;
+  transform: translateX(100%);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.slides10 {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 240px;
-    height: 320px;
-    background: var(--img);
-    background-position: center;
-    background-size: cover;
-    transition: 0.5s;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.slides10:nth-child(1),
-.slides10:nth-child(2) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateY(0);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+/* Dark Overlay for Text Visibility */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.slides10:nth-child(3) {
-    left: calc(50% + 240px);
+/* Slide Content */
+.slide-content {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  max-width: 70%;
+  z-index: 2;
 }
 
-.slides10:nth-child(4) {
-    left: calc(50% + 500px);
+.slide-content h2 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
-.slides10:nth-child(5) {
-    left: calc(50% + 760px);
+.slide-content p {
+  font-size: 1.2em;
+  font-weight: 400;
 }
 
-.slides10:nth-child(6) {
-    left: calc(50% + 1020px);
-    opacity: 0;
+/* Navigation Buttons */
+.prev-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.buttons10 {
-    position: absolute;
-    bottom: 15px;
-    display: flex;
-    gap: 20px;
-    left: 45%;
+.prev-button {
+  left: 20px;
 }
 
-.buttons10 span {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
+.next-button {
+  right: 20px;
 }
 
-.buttons10 span:active {
-    opacity: 0.5;
+.prev-button:hover,
+.next-button:hover {
+  background: rgba(255, 255, 255, 0.6);
 }
 
-.content10 {
-    position: relative;
-    padding: 40px;
-    max-width: 600px;
-    transition: 0.25s;
-    transform: translateY(40px);
-    z-index: 10000;
-    opacity: 0;
+/* Dots Indicator */
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-.content10 h2 {
-    font-size: 4em;
-    color: #fff;
+.dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.content10 p {
-    color: #fff;
+.active-dot {
+  background: white;
+  width: 14px;
+  height: 14px;
 }
 
-.slides10:nth-child(1) .content10,
-.slides10:nth-child(2) .content10 {
-    opacity: 1;
-    transform: translateY(0px);
-    transition-delay: 0.5s;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .image-slider {
+    height: 80vh; /* Reduce height on mobile */
+  }
 
-@media (max-width: 900px) {
-    .container10 {
-        margin-top: 10%;
-    }
-    .slider10 {
-        inset: 40px;
-    }
+  .slide-content {
+    max-width: 90%;
+  }
 
-    .slides10 {
-        width: 100px;
-        height: 100px;
-        bottom: -170px;
-    }
+  .slide-content h2 {
+    font-size: 2em;
+  }
 
-    .slides10:nth-child(1),
-    .slides10:nth-child(2) {
-        bottom: 0;
-    }
+  .slide-content p {
+    font-size: 1em;
+  }
 
-    .slides10:nth-child(3) {
-        left: 0;
-    }
-
-    .slides10:nth-child(4) {
-        left: 120px;
-    }
-
-    .slides10:nth-child(5) {
-        left: 240px;
-    }
-
-    .slides10:nth-child(6) {
-        left: 360px;
-    }
-
-    .buttons10 {
-        left: 45%;
-        top: 715px;
-        margin-bottom: 15%;
-    }
-}
-
-/* styles.css */
-.slides10 {
-    opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
-}
-  
-.visible-slide {
-    opacity: 1;
-    transform: translateY(0px);
-}
-
-@media (min-width: 1840px) {
-    container10 {
-        height: 100%;
-    }
+  .prev-button,
+  .next-button {
+    font-size: 1.5em;
+  }
 }
 
 @media (max-width: 480px) {
-    .slider10 .visible-slide{
-        height: 500px;
-    }
+  .slide-content h2 {
+    font-size: 1.5em;
+  }
 
-    .buttons10 {
-        top: 35em;
-        left: 40%;
-    }
-}
+  .slide-content p {
+    font-size: 0.9em;
+  }
 
-@media (min-width: 481px) and (max-width: 720px) {
-    .slider10 .visible-slide {
-        height: 400px;
-    }
-
-    .buttons10 {
-        top: 480px;
-        left: 43%;
-    }
-}
-
-@media (min-width: 721px) {
-    .slider10 .visible-slide {
-        height: 470px;
-    }
-
-    .buttons10 {
-        top: 580px;
-    }
-}
-
-@media (max-width: 480px) {
-    .content10 h2 {
-        font-size: small;
-    }
-    .content10 p {
-        font-size: small;
-    }
+  .prev-button,
+  .next-button {
+    font-size: 1.2em;
+  }
 }
