@@ -36,7 +36,7 @@ const Page = () => {
           </div>
           <div className="header__image__card header__image__card-2">
             <span><i className="ri-goblet-line"></i></span>
-            <Link to="/liquorstore" className="text__link">Liquor Store</Link>
+            <Link to="/liqourstore" className="text__link">Liquor Store</Link>
           </div>
           <div className="header__image__card header__image__card-3">
             <span><i className="ri-shopping-basket-fill"></i></span>

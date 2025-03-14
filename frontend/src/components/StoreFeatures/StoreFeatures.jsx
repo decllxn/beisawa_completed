@@ -21,7 +21,7 @@ const StoreFeatures = () => {
       </p>
       <div className="store-grid">
         <div className="store-item">
-          <Link to="/liquorstore" className="store-link">
+          <Link to="/liqourstore" className="store-link">
             <img src={Whiskey} alt="Liquor Store" className="store-image" />
             <div className="store-overlay">
               <span>Liquor Store</span>
@@ -29,7 +29,7 @@ const StoreFeatures = () => {
           </Link>
         </div>
         <div className="store-item">
-          <Link to="/cosmetics-store" className="store-link">
+          <Link to="/cosmetics" className="store-link">
             <img
               src={Cosmetic}
               alt="Cosmetics Store"
@@ -49,7 +49,7 @@ const StoreFeatures = () => {
           </Link>
         </div>
         <div className="store-item">
-          <Link to="/fruits" className="store-link">
+          <Link to="/grocery" className="store-link">
             <img
               src={Fruits}
               alt="Fruits"
@@ -62,7 +62,7 @@ const StoreFeatures = () => {
           
         </div>
         <div className="store-item">
-          <Link to="/electronics" className="store-link">
+          <Link to="/electronicsstore" className="store-link">
             <img
               src={Appliance}
               alt="Electronics"
