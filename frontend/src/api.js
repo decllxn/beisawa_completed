@@ -4,7 +4,7 @@ import { getCSRFToken } from "../utils/csrf";
 
 
 // Set environment-based API base URL
-const BASE_URL = "https://beisawa-completed.onrender.com";
+const BASE_URL = "https://api.co.beisawa.co.ke";
 const API_BASE_URL = `${BASE_URL}/offers/api/`;
 const API_BASE_URL2 = `${BASE_URL}/blog/api/`;
 

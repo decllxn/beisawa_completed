@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Experience.css";
 import thisOrders from "./expimg/thisOrders.jpeg";
-import SawaPoints from "./expimg/SawaPoints.jpeg";
+import SawaPoints from "./expimg/sawapoints.png";
 import Online from "./expimg/online-shopping.jpeg";
 import Special from "./expimg/Special-Offers.jpg";
 
@@ -17,7 +17,7 @@ const experiences = [
     title: "Sawa points",
     subtitle: "Loyalty points from shopping",
     image: SawaPoints,
-    link: "/sawa-point",
+    link: "/",
   },
   {
     title: "Sizzling offers",

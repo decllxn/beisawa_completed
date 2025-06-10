@@ -71,7 +71,7 @@ const Footer = () => {
                 </div>
             </div>
             <hr className="footer-hr"/>
-            <p className="copyright">Copyright © Beisawa limited - all rights reserved</p>
+            <p className="copyright">2025 Copyright © Beisawa limited - all rights reserved</p>
         </footer>
     );
 };
